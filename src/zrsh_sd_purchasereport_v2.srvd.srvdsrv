@@ -1,0 +1,13 @@
+@EndUserText.label: 'Purchase Document Transactional App'
+define service ZRSH_SD_PurchaseReport_V2 {
+  expose ZC_RSH_PurchaseDoc_V2_Proj;
+  expose ZC_RSH_PurchaseItems_V2_Proj;
+  expose ZI_RSH_PurchaseDoc_U;
+  expose ZI_RSH_PurchaseItems_U;
+  expose ZI_RSH_PurchaseDoc;
+  expose ZI_RSH_PurchaseItems;
+  expose ZI_RSH_PurchaseTotalPrice;
+  expose ZI_RSH_PurchaseStatus;
+  expose zc_rishi_POStatusVH;
+  expose ZI_Rishi_Vendor;
+}

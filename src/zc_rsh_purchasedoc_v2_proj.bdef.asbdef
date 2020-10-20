@@ -1,0 +1,20 @@
+projection;
+
+define behavior for ZC_RSH_PurchaseDoc_V2_Proj //alias <alias_name>
+{
+  use create;
+  use update;
+  use delete;
+  use action set_status_inprocess as setStatusInprocess;
+  field ( readonly ) PurchaseDocument, CreatedBy, CreatedDatetime, TotalPrice,Currency;
+  field( mandatory: create ) Status;
+
+  use association _Items { create; }
+}
+
+define behavior for ZC_RSH_PurchaseItems_V2_Proj //alias <alias_name>
+{
+  use create;
+  use update;
+  use delete;
+}

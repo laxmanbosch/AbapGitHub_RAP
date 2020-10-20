@@ -1,0 +1,12 @@
+@EndUserText.label: 'Purchase Report Service Def'
+define service ZRSH_SD_PurchaseReport {
+  expose ZC_RSH_PurchaseDocReport;
+  expose ZC_RSH_PurchaseItems;
+  expose ZI_RSH_PurchaseDoc;
+  expose ZI_RSH_PurchaseItems;
+  expose ZI_RSH_PurchasePriority;
+  expose ZI_RSH_PurchaseStatus;
+  expose ZI_RSH_PurchaseTotalPrice;
+  expose zc_rishi_POStatusVH;
+  expose ZI_Rishi_PurchaseStatus;
+}

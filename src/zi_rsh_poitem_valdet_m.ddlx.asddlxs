@@ -1,0 +1,104 @@
+@Metadata.layer: #CORE
+@UI:{
+headerInfo:{
+title:{ value: 'ItemDesc',type: #STANDARD },
+description:{ value: 'PurchaseItem',type:#STANDARD},
+typeName:'Purchase Document Item',
+typeNamePlural: 'Items'
+}
+
+}
+annotate view ZC_RSH_POITEM_VALDET_M with
+{
+  //ZC_RSH_PurchaseItems_V2_Proj
+  @UI.facet: [
+
+  {
+  id:'ItemNumber',
+  type:#DATAPOINT_REFERENCE,
+  targetQualifier: 'ItemNo' ,
+  purpose:#HEADER
+
+  },
+    {
+  id:'TotalItemPrice',
+  type:#DATAPOINT_REFERENCE,
+  targetQualifier: 'ItemPrice' ,
+  purpose:#HEADER
+
+  },
+    {
+  id:'ItemPrice',
+  type:#DATAPOINT_REFERENCE,
+  targetQualifier: 'ItemQuantity' ,
+  purpose:#HEADER
+
+  },
+
+  {
+
+  id:'CollectFacet',
+  type: #COLLECTION,
+  label: 'Purchase Item Info',
+  purpose: #STANDARD
+
+  },
+
+  {
+
+  id:'ItemData',
+  parentId: 'CollectFacet',
+  type: #FIELDGROUP_REFERENCE,
+  label: 'Purchase Item Data',
+  purpose: #STANDARD,
+  targetQualifier: 'ItemData'
+
+  },
+  
+    {
+
+  id:'AdminInfo',
+  label: 'Admin Data',
+  purpose: #STANDARD,
+  type: #FIELDGROUP_REFERENCE,
+  parentId: 'CollectFacet',
+  targetQualifier: 'AdminData'
+
+  },
+  { 
+  
+  id:'VendorData',
+  type: #LINEITEM_REFERENCE,
+  purpose: #STANDARD,
+  targetElement: '_Vendor',
+  label: 'Vendor Data'
+  }
+  
+
+
+  //
+  ]
+  @UI.lineItem: [{ position: 10,label: 'PurchaseItem',importance: #HIGH }]
+  @UI.identification: [{ position: 10 }]
+  @UI.dataPoint:{ title: 'Item No',qualifier: 'ItemNo' }
+  @UI.fieldGroup: [{ position: 10,label: 'Purchase Item',qualifier: 'ItemData' }]
+  PurchaseItem;
+  @UI.lineItem: [{ position: 20,label: 'Item Description',importance: #HIGH }]
+  @UI.fieldGroup: [{ position: 20,label: 'Description',qualifier: 'ItemData' }]
+  ItemDesc;
+
+  @UI.dataPoint:{ title: 'Item Price',qualifier: 'ItemPrice' }
+  TotalPrice;
+  @UI.lineItem: [{ position: 30,label: 'Price',importance: #HIGH }]
+  @UI.fieldGroup: [{ position: 30,label: 'Item Price',qualifier: 'ItemData' }]
+  Price;
+  @UI.lineItem: [{ position: 50,label: 'Quantity',importance: #HIGH }]
+  @UI.dataPoint:{ title: 'Quantity',qualifier: 'ItemQuantity' }
+  @UI.fieldGroup: [{ position: 40,label: 'Item quantity',qualifier: 'ItemData' }]
+  Quantity;
+  @UI.lineItem: [{ position: 70,label: 'Change Time Date',importance: #HIGH }]
+  @UI.fieldGroup: [{position: 10 , label: 'Changed By',qualifier: 'AdminData' }]
+  ChangeDateTime;
+  /* Associations */
+  //ZC_RSH_PurchaseItems_V2_Proj
+}

@@ -1,0 +1,125 @@
+@Metadata.layer: #CORE
+@UI:{
+headerInfo:{
+
+typeName: 'Purchase Document',
+typeNamePlural: 'Purchase Documents',
+
+title:{ value: 'PurchaseDocument',type: #STANDARD },
+description:{ value: 'PurchaseDescription',type: #STANDARD }
+
+}
+
+}
+annotate view ZC_RSH_PurchaseDoc_V2_Proj with
+{
+  @UI.facet: [
+
+  {
+  id:'Status',
+  type: #DATAPOINT_REFERENCE,
+  purpose: #HEADER,
+  targetQualifier: 'Status'
+   },
+   {
+  id:'TotalPrice',
+  type: #DATAPOINT_REFERENCE,
+  purpose: #HEADER,
+  targetQualifier: 'TotalPrice'
+   },
+  {
+  id:'Priority',
+  type: #DATAPOINT_REFERENCE,
+  purpose: #HEADER,
+  targetQualifier: 'Priority'
+   } ,
+  {
+  id:'Approval',
+  type: #DATAPOINT_REFERENCE,
+  purpose: #HEADER,
+  targetQualifier: 'IsApprovalRequired'
+   } ,
+
+
+   {
+
+   id:'CollectionFacet',
+   type:#COLLECTION,
+   label:'Purchase Data',
+   purpose: #STANDARD
+
+   },
+
+
+   {
+
+   id:'fieldgroup1',
+   type:#FIELDGROUP_REFERENCE,
+   parentId: 'CollectionFacet',
+   targetQualifier: 'PurchaseBasicData',
+   label: 'Purchase Information'
+
+   },
+
+   {
+
+   id:'fieldgroup2',
+   type:#FIELDGROUP_REFERENCE,
+   parentId: 'CollectionFacet',
+   targetQualifier: 'AdminData',
+   label: 'Admin Information'
+
+   },
+
+   {
+
+   id: 'PurchaseItems',
+   type: #LINEITEM_REFERENCE,
+   purpose: #STANDARD,
+   label: 'Purchase Items',
+   targetElement: '_Items'
+   }
+
+
+  ]
+  @UI.lineItem: [{ position: 10,importance: #HIGH, label: 'Purchase Document' }]
+  @UI.selectionField: [{ position: 10 }]
+  @UI.fieldGroup: [{ position: 10,label: 'PurchaseDocument', qualifier: 'PurchaseBasicData'}]
+  PurchaseDocument;
+  @UI.lineItem: [{ position: 20,importance: #HIGH, label: 'Purchase Document' }]
+  @UI.fieldGroup: [{ position: 20,label: 'Purchase Description', qualifier: 'PurchaseBasicData'}]
+  PurchaseDescription;
+  @UI.lineItem: [{ position: 30,importance: #HIGH, label: 'Status' },
+  { type:#FOR_ACTION, dataAction: 'setStatusInprocess',label:'Set PO to In Process',position: 10 }]
+  @UI.selectionField: [{ position: 20 }]
+  @UI.dataPoint:{ title: 'Status' }
+  @UI.textArrangement: #TEXT_ONLY
+  @UI.fieldGroup: [{ position: 30,label: 'Status', qualifier: 'PurchaseBasicData'}]
+  Status;
+  @UI.lineItem: [{ position: 40,importance: #HIGH, label: 'Priority' }]
+  @UI.selectionField: [{ position: 30 }]
+  @UI.dataPoint:{ title: 'Piority' }
+  @UI.textArrangement: #TEXT_ONLY
+  @UI.fieldGroup: [{ position: 40,label: 'Prioriity', qualifier: 'PurchaseBasicData'}]
+  Priority;
+
+  @UI.lineItem: [{ position: 50,importance: #HIGH, label: 'Created By' }]
+  @UI.fieldGroup: [{ position: 10,label: 'Create By',qualifier: 'AdminData' }]
+  CreatedBy;
+
+  @UI.lineItem: [{ position: 60,importance: #HIGH, label: 'Created On' }]
+  @UI.fieldGroup: [{ position: 20,label: 'Created On',qualifier: 'AdminData' }]
+  CreatedDatetime;
+  @UI.lineItem: [{ position: 70,importance: #HIGH, label: 'Total Price' ,criticality: 'PriceCriticality',criticalityRepresentation: #WITH_ICON}]
+  @UI.dataPoint:{ title:'TotalPrice',criticality: 'PriceCriticality' }
+  @UI.fieldGroup: [{ position: 50,label: 'Total Purchase Price', qualifier: 'PurchaseBasicData'}]
+  TotalPrice;
+
+  @UI.hidden: true
+  PriceCriticality;
+  @UI.lineItem: [{ position: 80,importance: #HIGH, label: 'Is Approval Required' ,criticality: 'PriceCriticality',criticalityRepresentation: #WITH_ICON}]
+  @UI.dataPoint:{ title:'IsApproval required',criticality: 'PriceCriticality' }
+  IsApprovalRequired;
+
+
+}
