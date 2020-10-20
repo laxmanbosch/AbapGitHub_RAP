@@ -1,0 +1,7 @@
+@EndUserText.label: 'ZRISHI_SD_PurchaseManagement'
+define service ZRISHI_SD_PurchaseManagement {
+  expose ZC_AFG_PurchaseDocs_Proj;
+  expose ZC_AFG_PURCHASEITEMS_Proj;
+  expose ZI_AFG_PurchaseDocs;
+  expose ZI_AFG_PurchaseItems;
+}

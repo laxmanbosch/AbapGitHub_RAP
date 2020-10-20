@@ -1,0 +1,4 @@
+@EndUserText.label: 'Query'
+define service ZAFG_UNMANAGED_QUERY {
+  expose ZC_AFG_Query_U;
+}

@@ -1,0 +1,51 @@
+managed implementation in class zbp_i_afg_purchasedocs unique;
+
+define behavior for ZI_AFG_PurchaseDocs alias PurchaseDoc
+persistent table zrishi_podoc
+lock master
+//authorization master ( instance )
+//etag master <field_name>
+{
+  create;
+  update;
+  delete;
+
+  association _Items { create; }
+
+  mapping for zrishi_podoc
+  {
+
+    PurchaseDocument = po_document;
+    PurchaseDesc = po_desc;
+    PurchasePrio = po_priority;
+    PurchaseStatus = po_status;
+    ChangedBy = changed_date_time;
+    CreatedBy = create_by;
+    CreatedOn = created_date_time;
+  }
+}
+
+define behavior for ZI_AFG_PurchaseItems alias PurchaseItems
+persistent table zrishi_poitem
+lock dependent (PurchaseDocument = PurchaseDocument )
+//authorization dependent by <association>
+//etag master <field_name>
+{
+  field(readonly : update) PurchaseDocument;
+  update;
+  delete;
+  determination calculateTotalPrice on modify {field Price,Currency;}//trigger at field level
+  mapping for zrishi_poitem
+
+  {
+    PurchaseDocument = po_document;
+    PurchaseItem = po_item;
+    ItemDesc = item_desc;
+    Currency = currency;
+    Price = price;
+    Quantity = quantity;
+    ChangeDateTime = change_date_time;
+    Unit = unit;
+
+  }
+}
