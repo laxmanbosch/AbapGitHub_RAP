@@ -1,0 +1,15 @@
+@Metadata.layer: #CORE
+annotate view ZC_Rishi_PO_PendingAppr_OVP
+    with 
+{
+    //ZC_Rishi_PO_PendingAppr_OVP
+    @UI.lineItem: [{ position: 10 ,label: 'PurchaseDocument',importance: #HIGH}]
+    PurchaseDocument;
+    @UI.lineItem: [{ position: 20,label: 'Total Price',importance: #HIGH }]
+    TotalPrice;
+    @UI.lineItem: [{ position: 30, label: 'Purchase Description',importance: #HIGH }]
+    PurchaseDesc;
+    @UI.lineItem: [{ position: 40, label: 'Created By',importance: #HIGH }]
+    CreatedBy;
+    
+}

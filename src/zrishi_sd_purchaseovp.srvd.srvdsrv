@@ -1,0 +1,10 @@
+@EndUserText.label: 'Purchase Overview Service'
+define service ZRISHI_SD_PurchaseOVP {
+  expose ZC_RISHI_POFilter_OVP;
+  expose zc_rishi_postatusprio_ovp;
+  expose ZC_Rishi_PO_Budget_Util_OVP;
+  expose ZC_Rishi_PO_PendingAppr_OVP;
+  expose ZC_Rishi_PO_Items_OVP;
+  expose zc_rishi_POStatusVH;
+  expose ZC_RISHI_POPriority;
+}

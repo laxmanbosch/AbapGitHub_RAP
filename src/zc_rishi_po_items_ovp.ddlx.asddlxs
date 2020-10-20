@@ -1,0 +1,23 @@
+@Metadata.layer: #CORE
+annotate view ZC_Rishi_PO_Items_OVP with
+{
+  //ZC_Rishi_PO_Items_OVP
+  @UI.lineItem: [{ position: 10,importance: #HIGH }]
+  PurchaseDocument;
+  @UI.lineItem: [{ position: 20 ,importance: #HIGH}]
+  PurchaseItem;
+  @UI.lineItem: [{ position: 30,importance: #HIGH }]
+  ItemDesc;
+  @UI.lineItem: [{ position: 40 ,importance: #HIGH}]
+  Vendor;
+  @UI.lineItem: [{ position: 50,importance: #LOW }]
+  Price;
+  @UI.lineItem: [{ position: 60, importance: #MEDIUM }]
+  TotalPrice;
+  @UI.lineItem: [{ position: 70 , importance: #HIGH}]
+  Quantity;
+  @UI.lineItem: [{ position: 80,importance: #HIGH }]
+
+  ChangeDateTime;
+
+}

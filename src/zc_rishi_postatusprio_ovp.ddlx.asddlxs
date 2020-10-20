@@ -1,0 +1,45 @@
+@Metadata.layer: #CORE
+@UI.chart: [
+
+{
+qualifier: 'PurchaseDocPriority',
+title: 'Purchase Document Priority',
+chartType: #DONUT,
+dimensions: ['PurchasePrio','PriorityText'],
+dimensionAttributes: [{ dimension: 'PurchasePrio',role: #CATEGORY },
+                      { dimension: 'PriorityText',role: #CATEGORY }],
+measures: ['SumofDocuments'],
+measureAttributes: [{ measure: 'SumofDocuments',role: #AXIS_1 }]
+ },
+{
+qualifier: 'PurchaseDocStatus',
+title: 'Purchase Document Status',
+chartType: #DONUT,
+dimensions: ['PurchaseStatus','StatusText'],
+dimensionAttributes: [{ dimension: 'PurchaseStatus',role: #CATEGORY },
+                      { dimension: 'StatusText',role: #CATEGORY }],
+measures: ['SumofDocuments'],
+measureAttributes: [{ measure: 'SumofDocuments',role: #AXIS_1 }]
+ }
+
+]
+@UI.presentationVariant: [{ groupBy: ['PurchaseDocument'],qualifier: 'myKPI',visualizations: [{ element: 'SumofDocuments' }] }]
+annotate view zc_rishi_postatusprio_ovp with
+{
+
+  //zc_rishi_postatusprio_ovp
+  @UI.identification: [{ position: 10,label: 'Purchase Document' }]
+  
+  PurchaseDocument;
+
+  @UI.textArrangement: #TEXT_ONLY
+  PurchaseStatus;
+  @UI.textArrangement: #TEXT_ONLY
+  PurchasePrio;
+
+  @UI.dataPoint.visualization: #NUMBER
+  @UI.kpi: [{ detail:{ defaultPresentationVariantQualifier: 'myKPI' } }]
+  SumofDocuments;
+
+
+}
